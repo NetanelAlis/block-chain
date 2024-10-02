@@ -1,0 +1,20 @@
+FROM ubuntu:22.04
+
+# Install dependencies
+RUN apt-get update && apt-get install -y zlib1g && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Copy the binary into the container
+COPY /build/server.out /root/
+
+# Create necessary directories and files in a single RUN command
+RUN mkdir -p /root/mnt/mta \
+    && touch /root/mnt/mta/mtacoin.conf \
+    && chmod 646 /root/mnt/mta/mtacoin.conf \
+    && touch /var/log/mtacoin.log \
+    && chmod o+w /var/log/mtacoin.log
+
+# Set the working directory
+WORKDIR /root
+
+# Set the entrypoint command
+CMD ["sh", "-c", "./server.out >> /var/log/mtacoin.log"]
