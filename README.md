@@ -34,11 +34,11 @@ Ensure the following tools are installed:
 ### Running the Application
 To launch the system, follow these steps:
 
-1. Make the launcher script executable:
+1. Download launcher.sh to your linux machine
+2. Make the launcher script executable:
    ```bash
    chmod +x launcher.sh
-
-2. **Run the launcher.sh script with two parameters**:
+3. **Run the launcher.sh script with two parameters**:
 
     difficulty level (e.g., 5)
     number of miners (e.g., 3)
